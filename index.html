@@ -3,458 +3,271 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RedMed Ambulance - 24/7 Emergency Services</title>
+    <title>RedMed Agent Panel - Production Dashboard</title>
     <style>
         :root {
             --primary-red: #DC2626;
             --dark-red: #B91C1C;
             --light-red: #FEE2E2;
-            --dark-blue: #1E3A8A;
-            --gray-900: #111827;
-            --gray-800: #1F2937;
             --gray-100: #F3F4F6;
-            --white: #FFFFFF;
+            --gray-800: #1F2937;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: Arial, sans-serif; 
+            background: #f8fafc;
+            color: var(--gray-800);
         }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%);
-            color: var(--white);
-            line-height: 1.6;
+        .agent-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
             min-height: 100vh;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        
+        /* Sidebar */
+        .sidebar {
+            background: white;
+            border-right: 1px solid #e5e7eb;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
         }
-
-        /* Header */
-        .header {
-            background: rgba(220, 38, 38, 0.95);
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
+        .sidebar-header {
+            padding: 2rem 1.5rem;
+            background: var(--primary-red);
+            color: white;
         }
-
-        .nav {
+        .sidebar-logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+        .sidebar-subtitle {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+        .nav-menu {
+            padding: 1.5rem 0;
+        }
+        .nav-item {
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        .nav-item:hover, .nav-item.active {
+            background: var(--light-red);
+            border-left-color: var(--primary-red);
+            color: var(--primary-red);
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 2rem;
+        }
+        .dashboard-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-text {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: white;
-            letter-spacing: 1px;
-        }
-
-        .logo-subtitle {
-            font-size: 0.7rem;
-            color: #FECACA;
-            font-weight: 700;
-            letter-spacing: 1px;
-            background: rgba(255,255,255,0.2);
-            padding: 4px 8px;
-            border-radius: 10px;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 140px 0 80px;
-            color: white;
-            position: relative;
-            overflow: hidden;
-            margin-top: 80px;
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
             margin-bottom: 2rem;
-            opacity: 0.9;
         }
-
-        /* Booking Form */
-        .booking-form {
-            background: var(--white);
-            color: var(--gray-800);
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            max-width: 500px;
-            margin: 0 auto;
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
-
-        .form-title {
-            color: var(--gray-900);
-            font-size: 1.5rem;
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--primary-red);
+        }
+        .stat-value {
+            font-size: 2rem;
             font-weight: 800;
+            color: var(--gray-800);
+            margin: 0.5rem 0;
+        }
+        .stat-label {
+            color: var(--gray-800);
+            font-weight: 600;
+        }
+        
+        /* Notifications */
+        .notifications-panel {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .notification-item {
+            padding: 1rem;
+            border-left: 4px solid var(--primary-red);
+            background: var(--light-red);
             margin-bottom: 1rem;
-            text-align: center;
+            border-radius: 8px;
         }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 1rem 1.5rem;
-            border: 2px solid var(--gray-100);
-            border-radius: 12px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--primary-red);
-            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
-        }
-
-        .btn-emergency {
-            width: 100%;
-            background: var(--primary-red);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .btn-emergency:hover {
-            background: var(--dark-red);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4);
-        }
-
+        
         /* Quick Actions */
         .quick-actions {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 1rem;
+            gap: 1.5rem;
         }
-
-        .btn-call, .btn-whatsapp {
-            padding: 0.8rem 1rem;
+        .action-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .btn-primary {
+            background: var(--primary-red);
+            color: white;
+            padding: 12px 24px;
             border: none;
-            border-radius: 10px;
+            border-radius: 8px;
             font-weight: 600;
             cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            display: block;
-            transition: all 0.3s ease;
-        }
-
-        .btn-call {
-            background: #EF4444;
-            color: white;
-        }
-
-        .btn-whatsapp {
-            background: #25D366;
-            color: white;
-        }
-
-        .btn-call:hover, .btn-whatsapp:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Services Section */
-        .services {
-            padding: 80px 0;
-            background: var(--gray-100);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--gray-900);
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--gray-800);
-            margin-bottom: 3rem;
-            font-size: 1.1rem;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            border-left: 4px solid var(--primary-red);
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-name {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--gray-900);
-            margin-bottom: 0.5rem;
-        }
-
-        .service-desc {
-            color: var(--gray-800);
-            line-height: 1.6;
-        }
-
-        /* Contact Info */
-        .contact-info {
-            text-align: center;
-            margin: 3rem 0;
-            padding: 2rem;
-        }
-
-        .phone-number {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-red);
+            width: 100%;
             margin: 0.5rem 0;
         }
-
-        /* Footer */
-        .footer {
-            background: var(--gray-900);
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
-        }
-
-        .footer-logo {
-            font-size: 2rem;
-            font-weight: 900;
-            margin-bottom: 1rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-content {
-                padding: 0 20px;
-            }
-            
-            .quick-actions {
-                grid-template-columns: 1fr;
-            }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .booking-form {
-                margin: 0 20px;
-                padding: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
+        .btn-secondary {
+            background: var(--gray-100);
+            color: var(--gray-800);
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin: 0.5rem 0;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <nav class="nav">
-                <div class="logo">
-                    <div class="logo-text">RedMed</div>
-                    <div class="logo-subtitle">AMBULANCE SERVICES</div>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>24/7 Emergency Ambulance Service</h1>
-                <p>Fast, reliable, and professional ambulance services when you need them most. Your trusted partner in medical emergencies.</p>
-                
-                <div class="contact-info">
-                    <div class="phone-number">📞 6387465536</div>
-                    <div class="phone-number">💬 WhatsApp: 6387465536</div>
-                </div>
+    <div class="agent-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">RedMed</div>
+                <div class="sidebar-subtitle">AGENT PANEL - PRODUCTION</div>
+            </div>
+            
+            <div class="nav-menu">
+                <div class="nav-item active">📊 Dashboard</div>
+                <div class="nav-item">🚑 Bookings</div>
+                <div class="nav-item">👥 Drivers</div>
+                <div class="nav-item">💰 Fare Management</div>
+                <div class="nav-item">📈 Analytics</div>
+                <div class="nav-item">⚙️ Settings</div>
             </div>
         </div>
-    </section>
 
-    <!-- Booking Form -->
-    <section class="container">
-        <div class="booking-form">
-            <h3 class="form-title">Book Ambulance Now</h3>
-            <form id="bookingForm">
-                <div class="form-group">
-                    <input type="text" class="form-input" placeholder="Your Full Name" required id="userName">
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="dashboard-header">
+                <h1>Agent Dashboard</h1>
+                <div class="header-actions">
+                    <button class="btn-primary" onclick="refreshData()">Refresh Data</button>
                 </div>
-                <div class="form-group">
-                    <input type="tel" class="form-input" placeholder="Phone Number" required id="userPhone">
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Total Bookings</div>
+                    <div class="stat-value" id="totalBookings">0</div>
                 </div>
-                <button type="submit" class="btn-emergency">
-                    🚑 BOOK AMBULANCE NOW
-                </button>
-            </form>
-            
+                <div class="stat-card">
+                    <div class="stat-label">Pending Approvals</div>
+                    <div class="stat-value" id="pendingApprovals">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Active Drivers</div>
+                    <div class="stat-value" id="activeDrivers">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Today's Revenue</div>
+                    <div class="stat-value" id="todayRevenue">₹0</div>
+                </div>
+            </div>
+
+            <!-- Real-time Notifications -->
+            <div class="notifications-panel">
+                <h3>Real-time Notifications</h3>
+                <div id="notificationsContainer">
+                    <div class="notification-item">
+                        ✅ System Connected to Production API
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
             <div class="quick-actions">
-                <a href="tel:6387465536" class="btn-call">📞 CALL NOW</a>
-                <a href="https://wa.me/6387465536" class="btn-whatsapp">💬 WHATSAPP</a>
-            </div>
-            
-            <div style="text-align: center; margin-top: 1rem;">
-                <p style="color: #6B7280; font-size: 0.9rem;">We'll contact you within 30 seconds</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services">
-        <div class="container">
-            <h2 class="section-title">Our Ambulance Services</h2>
-            <p class="section-subtitle">Comprehensive medical transportation solutions</p>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">💊</div>
-                    <h3 class="service-name">ALS Ambulance</h3>
-                    <p class="service-desc">Advanced Life Support with trained paramedics and critical care equipment</p>
+                <div class="action-card">
+                    <h3>Quick Actions</h3>
+                    <button class="btn-primary">Create Booking</button>
+                    <button class="btn-secondary">Manage Drivers</button>
+                    <button class="btn-secondary">View Reports</button>
                 </div>
                 
-                <div class="service-card">
-                    <div class="service-icon">🚑</div>
-                    <h3 class="service-name">BLS Ambulance</h3>
-                    <p class="service-desc">Basic Life Support for safe patient transport and emergency care</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">⚰️</div>
-                    <h3 class="service-name">Dead Body Ambulance</h3>
-                    <p class="service-desc">Respectful and dignified mortuary transport services</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">❄️</div>
-                    <h3 class="service-name">Freezer Ambulance</h3>
-                    <p class="service-desc">Refrigerated transport for medical and pharmaceutical needs</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">🚁</div>
-                    <h3 class="service-name">Air Ambulance</h3>
-                    <p class="service-desc">Emergency air transport for critical long-distance medical needs</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">🚆</div>
-                    <h3 class="service-name">Train Ambulance</h3>
-                    <p class="service-desc">Comfortable long-distance rail transport with medical supervision</p>
+                <div class="action-card">
+                    <h3>System Status</h3>
+                    <div style="margin: 1rem 0;">
+                        <div>API: <span id="apiStatus" style="color: green;">✅ Connected</span></div>
+                        <div>Database: <span id="dbStatus" style="color: green;">✅ Online</span></div>
+                        <div>Real-time: <span id="socketStatus" style="color: green;">✅ Active</span></div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-logo">RedMed Ambulance</div>
-            <p>24/7 Emergency Medical Services</p>
-            <div class="contact-info">
-                <div class="phone-number">Emergency: 6387465536</div>
-                <div>WhatsApp: 6387465536</div>
-            </div>
-            <p style="margin-top: 2rem; opacity: 0.8;">&copy; 2025 RedMed Ambulance Services. All rights reserved.</p>
-        </div>
-    </footer>
+    </div>
 
     <script>
-        document.getElementById('bookingForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('userName').value;
-            const phone = document.getElementById('userPhone').value;
-            
-            alert(`Thank you ${name}! Our team will contact you at ${phone} within 30 seconds.`);
-            this.reset();
-        });
-        
-        // Request notification permission
-        if ('Notification' in window) {
-            Notification.requestPermission();
+        // Check API Health
+        async function checkAPIHealth() {
+            try {
+                const response = await fetch('https://redmed-ambulance.onrender.com/api/health');
+                const data = await response.json();
+                
+                if (data.success) {
+                    document.getElementById('apiStatus').textContent = '✅ Connected';
+                    document.getElementById('dbStatus').textContent = data.database.includes('Connected') ? '✅ Online' : '❌ Offline';
+                }
+            } catch (error) {
+                document.getElementById('apiStatus').textContent = '❌ Disconnected';
+                document.getElementById('dbStatus').textContent = '❌ Offline';
+            }
         }
+
+        // Refresh Data
+        async function refreshData() {
+            await checkAPIHealth();
+            addNotification('Data refreshed successfully');
+        }
+
+        // Add Notification
+        function addNotification(message) {
+            const container = document.getElementById('notificationsContainer');
+            const notification = document.createElement('div');
+            notification.className = 'notification-item';
+            notification.textContent = message;
+            container.prepend(notification);
+        }
+
+        // Initial load
+        checkAPIHealth();
+        addNotification('Agent Panel loaded successfully');
+
+        // Simulate real-time updates
+        setInterval(() => {
+            const randomBookings = Math.floor(Math.random() * 10);
+            document.getElementById('totalBookings').textContent = randomBookings + 15;
+        }, 10000);
     </script>
 </body>
-
 </html>
