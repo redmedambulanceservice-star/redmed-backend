@@ -3,271 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RedMed Agent Panel - Production Dashboard</title>
+    <title>RedMed Ambulance - 24/7 Emergency Services</title>
     <style>
         :root {
             --primary-red: #DC2626;
             --dark-red: #B91C1C;
             --light-red: #FEE2E2;
-            --gray-100: #F3F4F6;
-            --gray-800: #1F2937;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: Arial, sans-serif; 
-            background: #f8fafc;
-            color: var(--gray-800);
-        }
-        .agent-container {
-            display: grid;
-            grid-template-columns: 280px 1fr;
+            background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%);
+            color: white;
             min-height: 100vh;
         }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header { text-align: center; padding: 50px 0; }
+        .logo { font-size: 3rem; font-weight: bold; margin-bottom: 10px; }
+        .tagline { font-size: 1.2rem; opacity: 0.9; margin-bottom: 5px; }
         
-        /* Sidebar */
-        .sidebar {
+        .booking-form {
             background: white;
-            border-right: 1px solid #e5e7eb;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            color: #333;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        .sidebar-header {
-            padding: 2rem 1.5rem;
+        
+        .form-group { margin-bottom: 20px; }
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+        .btn-emergency {
             background: var(--primary-red);
             color: white;
-        }
-        .sidebar-logo {
-            font-size: 1.5rem;
-            font-weight: 900;
-            margin-bottom: 0.5rem;
-        }
-        .sidebar-subtitle {
-            font-size: 0.8rem;
-            opacity: 0.9;
-        }
-        .nav-menu {
-            padding: 1.5rem 0;
-        }
-        .nav-item {
-            padding: 1rem 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
             cursor: pointer;
+            width: 100%;
             transition: all 0.3s ease;
-            border-left: 4px solid transparent;
         }
-        .nav-item:hover, .nav-item.active {
-            background: var(--light-red);
-            border-left-color: var(--primary-red);
-            color: var(--primary-red);
+        .btn-emergency:hover {
+            background: var(--dark-red);
+            transform: translateY(-2px);
         }
         
-        /* Main Content */
-        .main-content {
-            padding: 2rem;
+        .contact-info {
+            text-align: center;
+            margin: 30px 0;
         }
-        .dashboard-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
+        .phone-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 10px 0;
         }
-        .stats-grid {
+        
+        .services {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .service-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
         }
-        .stat-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            border-left: 4px solid var(--primary-red);
-        }
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--gray-800);
-            margin: 0.5rem 0;
-        }
-        .stat-label {
-            color: var(--gray-800);
-            font-weight: 600;
-        }
-        
-        /* Notifications */
-        .notifications-panel {
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-        .notification-item {
-            padding: 1rem;
-            border-left: 4px solid var(--primary-red);
-            background: var(--light-red);
-            margin-bottom: 1rem;
-            border-radius: 8px;
-        }
-        
-        /* Quick Actions */
-        .quick-actions {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-        .action-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-        .btn-primary {
-            background: var(--primary-red);
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            margin: 0.5rem 0;
-        }
-        .btn-secondary {
-            background: var(--gray-100);
-            color: var(--gray-800);
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            margin: 0.5rem 0;
+        .service-card {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            backdrop-filter: blur(10px);
         }
     </style>
 </head>
 <body>
-    <div class="agent-container">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="sidebar-header">
-                <div class="sidebar-logo">RedMed</div>
-                <div class="sidebar-subtitle">AGENT PANEL - PRODUCTION</div>
-            </div>
+    <div class="container">
+        <div class="header">
+            <div class="logo">RedMed</div>
+            <div class="tagline">24/7 Emergency Ambulance Service</div>
+            <div class="tagline">Fast • Reliable • Professional</div>
+        </div>
+        
+        <div class="booking-form">
+            <h2 style="text-align: center; color: #DC2626; margin-bottom: 20px;">Book Ambulance Now</h2>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <input type="text" class="form-input" placeholder="Your Full Name" required id="userName">
+                </div>
+                <div class="form-group">
+                    <input type="tel" class="form-input" placeholder="Phone Number" required id="userPhone">
+                </div>
+                <button type="submit" class="btn-emergency">
+                    🚑 BOOK AMBULANCE NOW
+                </button>
+            </form>
             
-            <div class="nav-menu">
-                <div class="nav-item active">📊 Dashboard</div>
-                <div class="nav-item">🚑 Bookings</div>
-                <div class="nav-item">👥 Drivers</div>
-                <div class="nav-item">💰 Fare Management</div>
-                <div class="nav-item">📈 Analytics</div>
-                <div class="nav-item">⚙️ Settings</div>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="tel:6387465536" style="color: #DC2626; text-decoration: none; font-weight: bold; display: block; margin: 10px 0;">
+                    📞 CALL NOW: 6387465536
+                </a>
+                <a href="https://wa.me/6387465536" style="color: #25D366; text-decoration: none; font-weight: bold; display: block; margin: 10px 0;">
+                    💬 WHATSAPP: 6387465536
+                </a>
             </div>
         </div>
 
-        <!-- Main Content -->
-        <div class="main-content">
-            <div class="dashboard-header">
-                <h1>Agent Dashboard</h1>
-                <div class="header-actions">
-                    <button class="btn-primary" onclick="refreshData()">Refresh Data</button>
-                </div>
+        <div class="services">
+            <h3 style="margin-bottom: 20px;">Our Ambulance Services</h3>
+            <div class="service-grid">
+                <div class="service-card">🚑 ALS Ambulance<br><small>Advanced Life Support</small></div>
+                <div class="service-card">💊 BLS Ambulance<br><small>Basic Life Support</small></div>
+                <div class="service-card">⚰️ Dead Body<br><small>Mortuary Service</small></div>
+                <div class="service-card">❄️ Freezer Ambulance<br><small>Refrigerated Transport</small></div>
+                <div class="service-card">🚁 Air Ambulance<br><small>Emergency Air Transport</small></div>
+                <div class="service-card">🚆 Train Ambulance<br><small>Rail Transport</small></div>
             </div>
+        </div>
 
-            <!-- Stats Grid -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-label">Total Bookings</div>
-                    <div class="stat-value" id="totalBookings">0</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Pending Approvals</div>
-                    <div class="stat-value" id="pendingApprovals">0</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Active Drivers</div>
-                    <div class="stat-value" id="activeDrivers">0</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Today's Revenue</div>
-                    <div class="stat-value" id="todayRevenue">₹0</div>
-                </div>
-            </div>
-
-            <!-- Real-time Notifications -->
-            <div class="notifications-panel">
-                <h3>Real-time Notifications</h3>
-                <div id="notificationsContainer">
-                    <div class="notification-item">
-                        ✅ System Connected to Production API
-                    </div>
-                </div>
-            </div>
-
-            <!-- Quick Actions -->
-            <div class="quick-actions">
-                <div class="action-card">
-                    <h3>Quick Actions</h3>
-                    <button class="btn-primary">Create Booking</button>
-                    <button class="btn-secondary">Manage Drivers</button>
-                    <button class="btn-secondary">View Reports</button>
-                </div>
-                
-                <div class="action-card">
-                    <h3>System Status</h3>
-                    <div style="margin: 1rem 0;">
-                        <div>API: <span id="apiStatus" style="color: green;">✅ Connected</span></div>
-                        <div>Database: <span id="dbStatus" style="color: green;">✅ Online</span></div>
-                        <div>Real-time: <span id="socketStatus" style="color: green;">✅ Active</span></div>
-                    </div>
-                </div>
-            </div>
+        <div class="contact-info">
+            <div class="phone-number">📞 Emergency: 6387465536</div>
+            <div class="phone-number">💬 WhatsApp: 6387465536</div>
+            <p style="margin-top: 20px; opacity: 0.8;">24/7 Available • Fast Response • Professional Service</p>
         </div>
     </div>
 
     <script>
-        // Check API Health
-        async function checkAPIHealth() {
-            try {
-                const response = await fetch('https://redmed-ambulance.onrender.com/api/health');
-                const data = await response.json();
-                
-                if (data.success) {
-                    document.getElementById('apiStatus').textContent = '✅ Connected';
-                    document.getElementById('dbStatus').textContent = data.database.includes('Connected') ? '✅ Online' : '❌ Offline';
-                }
-            } catch (error) {
-                document.getElementById('apiStatus').textContent = '❌ Disconnected';
-                document.getElementById('dbStatus').textContent = '❌ Offline';
-            }
-        }
-
-        // Refresh Data
-        async function refreshData() {
-            await checkAPIHealth();
-            addNotification('Data refreshed successfully');
-        }
-
-        // Add Notification
-        function addNotification(message) {
-            const container = document.getElementById('notificationsContainer');
-            const notification = document.createElement('div');
-            notification.className = 'notification-item';
-            notification.textContent = message;
-            container.prepend(notification);
-        }
-
-        // Initial load
-        checkAPIHealth();
-        addNotification('Agent Panel loaded successfully');
-
-        // Simulate real-time updates
-        setInterval(() => {
-            const randomBookings = Math.floor(Math.random() * 10);
-            document.getElementById('totalBookings').textContent = randomBookings + 15;
-        }, 10000);
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('userName').value;
+            const phone = document.getElementById('userPhone').value;
+            
+            alert(`Thank you ${name}! Our team will contact you at ${phone} within 30 seconds.`);
+            this.reset();
+        });
     </script>
 </body>
 </html>
