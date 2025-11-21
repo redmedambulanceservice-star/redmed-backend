@@ -61,6 +61,10 @@
             --accent-blue: #1976D2;
             --whatsapp-green: #25D366;
             --whatsapp-dark-green: #128C7E;
+            --call-green: #4CAF50;
+            --call-dark-green: #2E7D32;
+            --whatsapp-blue: #2196F3;
+            --whatsapp-dark-blue: #0D47A1;
         }
 
         * {
@@ -257,11 +261,12 @@
             color: var(--emergency-red);
         }
 
+        /* Updated Call Now Button - Green */
         .call-now-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--emergency-red) 0%, var(--emergency-dark-red) 100%);
+            background: linear-gradient(135deg, var(--call-green) 0%, var(--call-dark-green) 100%);
             color: white;
             padding: 16px 32px;
             border-radius: 10px;
@@ -270,7 +275,7 @@
             text-decoration: none;
             margin: 12px;
             transition: all 0.3s;
-            box-shadow: 0 4px 12px rgba(244, 67, 54, 0.4);
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
             letter-spacing: 0.5px;
             gap: 10px;
@@ -278,16 +283,17 @@
 
         .call-now-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 16px rgba(244, 67, 54, 0.5);
+            box-shadow: 0 8px 16px rgba(76, 175, 80, 0.5);
         }
 
+        /* Updated WhatsApp Button - Blue */
         .whatsapp-button {
-            background: linear-gradient(135deg, var(--whatsapp-green) 0%, var(--whatsapp-dark-green) 100%);
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            background: linear-gradient(135deg, var(--whatsapp-blue) 0%, var(--whatsapp-dark-blue) 100%);
+            box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
         }
 
         .whatsapp-button:hover {
-            box-shadow: 0 8px 16px rgba(37, 211, 102, 0.5);
+            box-shadow: 0 8px 16px rgba(33, 150, 243, 0.5);
         }
 
         /* WhatsApp Icon Styling */
