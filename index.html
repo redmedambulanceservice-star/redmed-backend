@@ -3,28 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RedMed Ambulance - 24/7 Emergency Services</title>
+    <title>RedMed Ambulance - 24/7 Emergency Services in 500+ Cities Across India</title>
+    <meta name="description" content="RedMed provides 24/7 emergency ambulance services in 500+ cities across India including Lucknow, Delhi, Mumbai, Bangalore, Chennai & more. Fast, reliable medical transport.">
+    <meta name="keywords" content="ambulance service, emergency ambulance, medical transport, 24/7 ambulance, RedMed ambulance, air ambulance, ICU ambulance, ALS, BLS, patient transport">
+    <meta name="author" content="RedMed Ambulance Services">
+    
+    <!-- Schema.org markup for LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalBusiness",
+      "name": "RedMed Ambulance Services",
+      "description": "24/7 Emergency Ambulance Service across India",
+      "url": "https://redmedambulance.com",
+      "telephone": "+91-6387465536",
+      "areaServed": "India",
+      "availableService": [
+        {
+          "@type": "MedicalProcedure",
+          "name": "ALS Ambulance Service"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "BLS Ambulance Service"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Air Ambulance Service"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Mortuary Transport Service"
+        }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "IN"
+      }
+    }
+    </script>
+    
     <style>
         :root {
             --primary-red: #DC2626;
             --dark-red: #B91C1C;
             --light-red: #FEE2E2;
+            --emergency-red: #ff0000;
+            --emergency-dark-red: #cc0000;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --dark-text: #333333;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: Arial, sans-serif; 
-            background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%);
-            color: white;
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, var(--emergency-red) 0%, var(--emergency-dark-red) 100%);
+            color: var(--white);
             min-height: 100vh;
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
         .header { text-align: center; padding: 50px 0; }
-        .logo { font-size: 3rem; font-weight: bold; margin-bottom: 10px; }
-        .tagline { font-size: 1.2rem; opacity: 0.9; margin-bottom: 5px; }
+        .logo { 
+            font-size: 3rem; 
+            font-weight: bold; 
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .tagline { 
+            font-size: 1.2rem; 
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
         
+        /* Navigation */
+        .navbar {
+            background: rgba(255,255,255,0.9);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+        }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+            flex: 1;
+        }
+        .nav-links li {
+            margin: 0 15px;
+        }
+        .nav-links a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            display: block;
+        }
+        .nav-links a:hover {
+            background: var(--emergency-red);
+            color: white;
+        }
+        
+        /* Mobile Menu Button - LEFT SIDE */
+        .menu-toggle {
+            display: none;
+            background: var(--emergency-red);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            margin-right: 15px;
+            align-items: center;
+            justify-content: center;
+        }
+       
         .booking-form {
-            background: white;
-            color: #333;
+            background: var(--white);
+            color: var(--dark-text);
             padding: 30px;
             border-radius: 15px;
             margin: 20px 0;
@@ -32,8 +138,9 @@
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
+            border: 3px solid var(--white);
         }
-        
+       
         .form-group { margin-bottom: 20px; }
         .form-input {
             width: 100%;
@@ -41,9 +148,10 @@
             border: 2px solid #ddd;
             border-radius: 10px;
             font-size: 16px;
+            background: var(--light-gray);
         }
         .btn-emergency {
-            background: var(--primary-red);
+            background: var(--emergency-red);
             color: white;
             padding: 15px 30px;
             border: none;
@@ -53,28 +161,59 @@
             cursor: pointer;
             width: 100%;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
         .btn-emergency:hover {
-            background: var(--dark-red);
+            background: var(--emergency-dark-red);
             transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
         }
-        
+       
         .contact-info {
             text-align: center;
             margin: 30px 0;
+            background: rgba(255,255,255,0.9);
+            padding: 20px;
+            border-radius: 15px;
+            color: var(--dark-text);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
         .phone-number {
             font-size: 1.5rem;
             font-weight: bold;
             margin: 10px 0;
+            color: var(--emergency-red);
         }
         
+        .call-now-button {
+            display: inline-block;
+            background: var(--emergency-red);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        .call-now-button:hover {
+            background: var(--emergency-dark-red);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+        }
+       
         .services {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.9);
             padding: 30px;
             border-radius: 15px;
             margin: 20px 0;
             text-align: center;
+            color: var(--dark-text);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
         .service-grid {
             display: grid;
@@ -83,22 +222,228 @@
             margin-top: 20px;
         }
         .service-card {
-            background: rgba(255,255,255,0.2);
+            background: var(--light-gray);
             padding: 20px;
             border-radius: 10px;
             text-align: center;
-            backdrop-filter: blur(10px);
+            transition: transform 0.3s;
+            border-left: 4px solid var(--emergency-red);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            background: rgba(255,255,255,0.9);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            color: var(--dark-text);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .faq-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--emergency-red);
+        }
+        .faq-item {
+            background: var(--light-gray);
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            border-left: 4px solid var(--emergency-red);
+        }
+        .faq-question {
+            padding: 15px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--white);
+        }
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background: var(--light-gray);
+        }
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+        .faq-toggle {
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+            color: var(--emergency-red);
+        }
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+        
+        /* Cities section styles */
+        .cities-section {
+            background: rgba(255,255,255,0.9);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            color: var(--dark-text);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .cities-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--emergency-red);
+        }
+        .cities-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .city-item {
+            background: var(--light-gray);
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 0.9rem;
+            border-left: 3px solid var(--emergency-red);
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+        
+        /* Emergency Banner */
+        .emergency-banner {
+            background: var(--emergency-red);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .cities-container {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            /* Mobile Navigation */
+            .menu-toggle {
+                display: flex;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                margin-top: 15px;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: rgba(255,255,255,0.95);
+                border-radius: 0 0 10px 10px;
+                padding: 15px 0;
+                z-index: 100;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                margin: 5px 0;
+                width: 100%;
+                text-align: center;
+            }
+            .nav-links a {
+                padding: 12px;
+                border-radius: 5px;
+                width: 100%;
+            }
+            
+            .call-now-button {
+                display: block;
+                margin: 10px auto;
+                text-align: center;
+            }
+            
+            /* Adjust navbar for mobile with left menu */
+            .navbar {
+                justify-content: flex-start;
+                padding: 12px 15px;
+            }
+        }
+        
+        /* For larger screens, ensure menu toggle is hidden */
+        @media (min-width: 769px) {
+            .menu-toggle {
+                display: none !important;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
+        <!-- Emergency Banner -->
+        <div class="emergency-banner">
+            🚨 EMERGENCY AMBULANCE SERVICE - 24/7 AVAILABLE - CALL NOW: 6387465536 🚨
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="navbar">
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#cities">Cities</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        
+        <div class="header" id="home">
             <div class="logo">RedMed</div>
             <div class="tagline">24/7 Emergency Ambulance Service</div>
             <div class="tagline">Fast • Reliable • Professional</div>
+            
+            <!-- Emergency Call Buttons -->
+            <div style="margin-top: 30px;">
+                <a href="tel:6387465536" class="call-now-button">
+                    📞 CALL NOW: 6387465536
+                </a>
+                <a href="https://wa.me/6387465536" class="call-now-button" style="background: #25D366;">
+                    💬 WHATSAPP: 6387465536
+                </a>
+            </div>
         </div>
-        
+       
         <div class="booking-form">
             <h2 style="text-align: center; color: #DC2626; margin-bottom: 20px;">Book Ambulance Now</h2>
             <form id="bookingForm">
@@ -112,19 +457,10 @@
                     🚑 BOOK AMBULANCE NOW
                 </button>
             </form>
-            
-            <div style="text-align: center; margin-top: 20px;">
-                <a href="tel:6387465536" style="color: #DC2626; text-decoration: none; font-weight: bold; display: block; margin: 10px 0;">
-                    📞 CALL NOW: 6387465536
-                </a>
-                <a href="https://wa.me/6387465536" style="color: #25D366; text-decoration: none; font-weight: bold; display: block; margin: 10px 0;">
-                    💬 WHATSAPP: 6387465536
-                </a>
-            </div>
         </div>
 
-        <div class="services">
-            <h3 style="margin-bottom: 20px;">Our Ambulance Services</h3>
+        <div class="services" id="services">
+            <h3 style="margin-bottom: 20px; color: #DC2626;">Our Ambulance Services</h3>
             <div class="service-grid">
                 <div class="service-card">🚑 ALS Ambulance<br><small>Advanced Life Support</small></div>
                 <div class="service-card">💊 BLS Ambulance<br><small>Basic Life Support</small></div>
@@ -134,22 +470,474 @@
                 <div class="service-card">🚆 Train Ambulance<br><small>Rail Transport</small></div>
             </div>
         </div>
+        
+        <!-- FAQ Section -->
+        <div class="faq-section" id="faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question">
+                    What is the response time for RedMed ambulance services?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Our average response time is under 15 minutes in urban areas and 20-30 minutes in suburban/rural locations. We prioritize emergencies for fastest response.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    What types of ambulances do you provide?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    We offer a range of ambulances including Basic Life Support (BLS), Advanced Life Support (ALS), ICU ambulances, air ambulances, mortuary vans, and specialized transport for patients with specific needs.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Do you provide intercity ambulance services?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Yes, we provide both intracity and intercity ambulance services across all the cities we operate in. Our trained paramedics ensure safe patient transport over long distances.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    What payment methods do you accept?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    We accept cash, credit/debit cards, UPI payments, and also work with major insurance providers. Emergency cases are given priority regardless of payment method.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Are your staff trained and certified?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    All our paramedics and drivers are certified professionals with regular training in emergency medical procedures and patient handling. We maintain the highest standards of medical care.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Do you provide ambulance services 24/7?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Yes, RedMed operates 24 hours a day, 7 days a week, including all holidays. Our emergency helpline is always active to respond to your needs.
+                </div>
+            </div>
+        </div>
+        
+        <!-- Cities Section -->
+        <div class="cities-section" id="cities">
+            <h2>We Serve 500+ Cities Across India</h2>
+            <p style="text-align: center; margin-bottom: 20px;">RedMed provides 24/7 emergency ambulance services in major cities and towns across India.</p>
+            <div class="cities-container">
+                <!-- Major Cities - I've included a subset for display purposes -->
+                <div class="city-item">Lucknow</div>
+                <div class="city-item">Agra</div>
+                <div class="city-item">Aligarh</div>
+                <div class="city-item">Amroha</div>
+                <div class="city-item">Ayodhya</div>
+                <div class="city-item">Varanasi</div>
+                <div class="city-item">Dehradun</div>
+                <div class="city-item">Delhi</div>
+                <div class="city-item">Sitapur</div>
+                <div class="city-item">Saharanpur</div>
+                <div class="city-item">Prayagraj (Allahabad)</div>
+                <div class="city-item">Noida</div>
+                <div class="city-item">Moradabad</div>
+                <div class="city-item">Meerut</div>
+                <div class="city-item">Mathura</div>
+                <div class="city-item">Kanpur</div>
+                <div class="city-item">Jhansi</div>
+                <div class="city-item">Gorakhpur</div>
+                <div class="city-item">Ghaziabad</div>
+                <div class="city-item">Etawah</div>
+                <div class="city-item">Etah</div>
+                <div class="city-item">Bulandshahr</div>
+                <div class="city-item">Bijnor</div>
+                <div class="city-item">Bareilly</div>
+                <div class="city-item">Barabanki</div>
+                <div class="city-item">Banda</div>
+                <div class="city-item">Ballia</div>
+                <div class="city-item">Budaun</div>
+                <div class="city-item">Azamgarh</div>
+                <div class="city-item">Patna</div>
+                <div class="city-item">Jabalpur</div>
+                <div class="city-item">Muzaffarpur</div>
+                <div class="city-item">Gwalior</div>
+                <div class="city-item">Darbhanga</div>
+                <div class="city-item">Hazaribagh</div>
+                <div class="city-item">Deoghar</div>
+                <div class="city-item">Janjgir-Champa</div>
+                <div class="city-item">Rajnandgaon</div>
+                <div class="city-item">Ujjain</div>
+                <div class="city-item">Bikaner</div>
+                <div class="city-item">Ajmer</div>
+                <div class="city-item">Ambala</div>
+                <div class="city-item">Basti</div>
+                <div class="city-item">Mandi</div>
+                <div class="city-item">Rohtak</div>
+                <div class="city-item">Balrampur</div>
+                <div class="city-item">Kangra</div>
+                <div class="city-item">Roorkee</div>
+                <div class="city-item">Pantnagar</div>
+                <div class="city-item">Katni</div>
+                <div class="city-item">Khargone</div>
+                <div class="city-item">Mandsaur</div>
+                <div class="city-item">Damoh</div>
+                <div class="city-item">Neemuch</div>
+                <div class="city-item">Ratlam</div>
+                <div class="city-item">Sagar</div>
+                <div class="city-item">Satna</div>
+                <div class="city-item">Seoni</div>
+                <div class="city-item">Alwar</div>
+                <div class="city-item">Shivpuri</div>
+                <div class="city-item">Bharatpur</div>
+                <div class="city-item">Bhilwara</div>
+                <div class="city-item">Bundi</div>
+                <div class="city-item">Sawai Madhopur</div>
+                <div class="city-item">Dausa</div>
+                <div class="city-item">Chittorgarh</div>
+                <div class="city-item">Jhunjhunu</div>
+                <div class="city-item">Sri Ganganagar</div>
+                <div class="city-item">Udaipur</div>
+                <div class="city-item">Sikar</div>
+                <div class="city-item">Rewari</div>
+                <div class="city-item">Sirsa</div>
+                <div class="city-item">Yamunanagar</div>
+                <div class="city-item">Bhiwani</div>
+                <div class="city-item">Hisar</div>
+                <div class="city-item">Panchkula</div>
+                <div class="city-item">Palwal</div>
+                <div class="city-item">Baddi</div>
+                <div class="city-item">Jind</div>
+                <div class="city-item">Karnal</div>
+                <div class="city-item">Kurukshetra</div>
+                <div class="city-item">Una</div>
+                <div class="city-item">Abohar</div>
+                <div class="city-item">Sangrur</div>
+                <div class="city-item">Amritsar</div>
+                <div class="city-item">Rupnagar</div>
+                <div class="city-item">Patiala</div>
+                <div class="city-item">Pathankot</div>
+                <div class="city-item">Nangal</div>
+                <div class="city-item">Mohali</div>
+                <div class="city-item">Moga</div>
+                <div class="city-item">Ludhiana</div>
+                <div class="city-item">Jalandhar</div>
+                <div class="city-item">Hoshiarpur</div>
+                <div class="city-item">Ferozepur</div>
+                <div class="city-item">Bhatindaa</div>
+                <div class="city-item">Ahmedabad</div>
+                <div class="city-item">Anand</div>
+                <div class="city-item">Barnala</div>
+                <div class="city-item">Bhavnagar</div>
+                <div class="city-item">Bhuj</div>
+                <div class="city-item">Vapi</div>
+                <div class="city-item">Vadodara</div>
+                <div class="city-item">Surat</div>
+                <div class="city-item">Rajkot</div>
+                <div class="city-item">Daman</div>
+                <div class="city-item">Gandhidham</div>
+                <div class="city-item">Porbandar</div>
+                <div class="city-item">Jamnagar</div>
+                <div class="city-item">Junagadh</div>
+                <div class="city-item">Mehsana</div>
+                <div class="city-item">Navsari</div>
+                <div class="city-item">Morbi</div>
+                <div class="city-item">Nadiad</div>
+                <div class="city-item">Gandhinagar</div>
+                <div class="city-item">Mumbai</div>
+                <div class="city-item">Nagpur</div>
+                <div class="city-item">Pune</div>
+                <div class="city-item">Nashik</div>
+                <div class="city-item">Wardha</div>
+                <div class="city-item">Ahmednagar</div>
+                <div class="city-item">Shirdi</div>
+                <div class="city-item">Sangli</div>
+                <div class="city-item">Gaya</div>
+                <div class="city-item">Alibag</div>
+                <div class="city-item">Bhagalpur</div>
+                <div class="city-item">Ranchi</div>
+                <div class="city-item">Dhanbad</div>
+                <div class="city-item">Jamshedpur</div>
+                <div class="city-item">Chandrapur</div>
+                <div class="city-item">Raipur</div>
+                <div class="city-item">Bilaspur</div>
+                <div class="city-item">Durg</div>
+                <div class="city-item">Indore</div>
+                <div class="city-item">Gondia</div>
+                <div class="city-item">Bhopal</div>
+                <div class="city-item">Jodhpur</div>
+                <div class="city-item">Jaipur</div>
+                <div class="city-item">Nanded</div>
+                <div class="city-item">Chandigarh</div>
+                <div class="city-item">Kolkata</div>
+                <div class="city-item">Guna</div>
+                <div class="city-item">Jalna</div>
+                <div class="city-item">Kolhapur</div>
+                <div class="city-item">Latur</div>
+                <div class="city-item">Solan</div>
+                <div class="city-item">Jaunpur</div>
+                <div class="city-item">Farrukhabad</div>
+                <div class="city-item">Hoshangabad</div>
+                <div class="city-item">Shimla</div>
+                <div class="city-item">Kashipur</div>
+                <div class="city-item">Burhanpur</div>
+                <div class="city-item">Dharamshala</div>
+                <div class="city-item">Faridabad</div>
+                <div class="city-item">Panipat</div>
+                <div class="city-item">Gurgaon</div>
+                <div class="city-item">Kota</div>
+                <div class="city-item">Chhindwara</div>
+                <div class="city-item">Guwahati</div>
+                <div class="city-item">Bangalore</div>
+                <div class="city-item">Chennai</div>
+                <div class="city-item">Hyderabad</div>
+                <div class="city-item">Coimbatore</div>
+                <div class="city-item">Kakinada</div>
+                <div class="city-item">Vijayawada</div>
+                <div class="city-item">Haridwar</div>
+                <div class="city-item">Visakhapatnam</div>
+                <div class="city-item">Mysore</div>
+                <div class="city-item">Bhubaneswar</div>
+                <div class="city-item">Nellore</div>
+                <div class="city-item">Tirupati</div>
+                <div class="city-item">Kurnool</div>
+                <div class="city-item">Siliguri</div>
+                <div class="city-item">Chittoor</div>
+                <div class="city-item">Anantapur</div>
+                <div class="city-item">Bhimavaram</div>
+                <div class="city-item">Eluru</div>
+                <div class="city-item">Kadapa</div>
+                <div class="city-item">Ongole</div>
+                <div class="city-item">Jorhat</div>
+                <div class="city-item">Nandyal</div>
+                <div class="city-item">Kharagpur</div>
+                <div class="city-item">Rajahmundry</div>
+                <div class="city-item">Durgapur</div>
+                <div class="city-item">Asansol</div>
+                <div class="city-item">Cooch Behar</div>
+                <div class="city-item">Bardhaman</div>
+                <div class="city-item">Srikakulam</div>
+                <div class="city-item">Tanuku</div>
+                <div class="city-item">Warangal</div>
+                <div class="city-item">Vizianagaram</div>
+                <div class="city-item">Ballari</div>
+                <div class="city-item">Nizamabad</div>
+                <div class="city-item">Nalgonda</div>
+                <div class="city-item">Mahabubnagar</div>
+                <div class="city-item">Khammam</div>
+                <div class="city-item">Karimnagar</div>
+                <div class="city-item">Belagavi</div>
+                <div class="city-item">Mangalore</div>
+                <div class="city-item">Hubli Dharwad</div>
+                <div class="city-item">Kalaburagi</div>
+                <div class="city-item">Unnao</div>
+                <div class="city-item">Sultanpur</div>
+                <div class="city-item">Tanda</div>
+                <div class="city-item">Kochi</div>
+                <div class="city-item">Kozhikode</div>
+                <div class="city-item">Shikohabad</div>
+                <div class="city-item">Shamli</div>
+                <div class="city-item">Thiruvananthapuram</div>
+                <div class="city-item">Shahjahanpur</div>
+                <div class="city-item">Rampur</div>
+                <div class="city-item">Sambhal</div>
+                <div class="city-item">Raebareli</div>
+                <div class="city-item">Pilibhit</div>
+                <div class="city-item">Berhampur</div>
+                <div class="city-item">Orai</div>
+                <div class="city-item">Cuttack</div>
+                <div class="city-item">Puri</div>
+                <div class="city-item">Rourkela</div>
+                <div class="city-item">Muzaffarnagar</div>
+                <div class="city-item">Sambalpur</div>
+                <div class="city-item">Modinagar</div>
+                <div class="city-item">Mirzapur cum Vindhyachal</div>
+                <div class="city-item">Mau</div>
+                <div class="city-item">Mainpuri</div>
+                <div class="city-item">Lalitpur</div>
+                <div class="city-item">Lakhimpur</div>
+                <div class="city-item">Khurja</div>
+                <div class="city-item">Kasganj</div>
+                <div class="city-item">Hathras</div>
+                <div class="city-item">Greater Noida</div>
+                <div class="city-item">Madurai</div>
+                <div class="city-item">Hardoi</div>
+                <div class="city-item">Salem</div>
+                <div class="city-item">Dindigul</div>
+                <div class="city-item">Hapur</div>
+                <div class="city-item">Ghazipur</div>
+                <div class="city-item">Firozabad</div>
+                <div class="city-item">Vellore</div>
+                <div class="city-item">Goa</div>
+                <div class="city-item">Hosur</div>
+                <div class="city-item">Fatehpur</div>
+                <div class="city-item">Chandausi</div>
+                <div class="city-item">Tiruchirappalli</div>
+                <div class="city-item">Tirunelveli</div>
+                <div class="city-item">Imphal</div>
+                <div class="city-item">Gonda</div>
+                <div class="city-item">Thanjavur</div>
+                <div class="city-item">Silchar</div>
+                <div class="city-item">Srinagar</div>
+                <div class="city-item">Bokaro</div>
+                <div class="city-item">Deoria</div>
+                <div class="city-item">Jammu</div>
+                <div class="city-item">Uttarakhand</div>
+                <div class="city-item">Dimapur</div>
+                <div class="city-item">Raigarh</div>
+                <div class="city-item">Darjeeling</div>
+                <div class="city-item">Bahraich</div>
+                <div class="city-item">Kohima</div>
+                <div class="city-item">Shravasti</div>
+                <div class="city-item">Agartala</div>
+                <div class="city-item">Faizabad</div>
+                <div class="city-item">Sikandra</div>
+                <div class="city-item">Katra</div>
+                <div class="city-item">Patti</div>
+                <div class="city-item">Mahoba</div>
+                <div class="city-item">Saidpur</div>
+                <div class="city-item">Pratapgarh</div>
+                <div class="city-item">Chandpur</div>
+                <div class="city-item">Dasna</div>
+                <div class="city-item">Mankapur</div>
+                <div class="city-item">Lalganj</div>
+                <div class="city-item">Bisalpur</div>
+                <div class="city-item">Dadri</div>
+                <div class="city-item">Sandila</div>
+                <div class="city-item">Atrauli</div>
+                <div class="city-item">Kopaganj</div>
+                <div class="city-item">Khaga</div>
+                <div class="city-item">Raya</div>
+                <div class="city-item">Karhal</div>
+                <div class="city-item">Salon</div>
+                <div class="city-item">Patiyali</div>
+                <div class="city-item">Oel Dhakwa</div>
+                <div class="city-item">Aurangabad</div>
+                <div class="city-item">Purwa</div>
+                <div class="city-item">Rampur Maniharan</div>
+                <div class="city-item">Kalpi</div>
+                <div class="city-item">Mahona</div>
+                <div class="city-item">Loni</div>
+                <div class="city-item">Thakurdwara</div>
+                <div class="city-item">Atraulia</div>
+                <div class="city-item">Bisauli</div>
+                <div class="city-item">Kamalganj</div>
+                <div class="city-item">Bhatpar Rani</div>
+                <div class="city-item">Sikandarpur</div>
+                <div class="city-item">Tundla</div>
+                <div class="city-item">Auraiya</div>
+                <div class="city-item">Malda</div>
+                <div class="city-item">Howrah</div>
+                <div class="city-item">Jalpaiguri</div>
+                <div class="city-item">Purulia</div>
+                <div class="city-item">Bankura</div>
+                <div class="city-item">Haldia</div>
+                <div class="city-item">Midnapore</div>
+                <div class="city-item">Chinsurah, Hooghly</div>
+                <div class="city-item">Alipurduar</div>
+                <div class="city-item">North 24 Parganas</div>
+                <div class="city-item">South 24 Parganas</div>
+                <div class="city-item">Murshidabad</div>
+                <div class="city-item">Nadia</div>
+                <div class="city-item">Birbhum</div>
+                <div class="city-item">Kalimpong</div>
+                <div class="city-item">Vrindavan</div>
+                <div class="city-item">Gausganj</div>
+                <div class="city-item">Salarpur Khadar</div>
+                <!-- Additional cities would continue here -->
+            </div>
+        </div>
 
-        <div class="contact-info">
+        <!-- About Us Section -->
+        <div class="services" id="about">
+            <h3 style="margin-bottom: 20px; color: #DC2626;">About RedMed Ambulance Services</h3>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 20px;">
+                RedMed is a leading emergency medical service provider with over a decade of experience in patient transport and emergency care. 
+                Our mission is to provide timely, professional, and compassionate ambulance services when every second counts.
+            </p>
+            <div class="service-grid">
+                <div class="service-card">🏆 10+ Years<br><small>Experience</small></div>
+                <div class="service-card">🚑 500+<br><small>Ambulances</small></div>
+                <div class="service-card">👨‍⚕️ 1000+<br><small>Trained Staff</small></div>
+                <div class="service-card">⭐ 4.9/5<br><small>Customer Rating</small></div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-info" id="contact">
+            <h3 style="margin-bottom: 20px; color: #DC2626;">Contact RedMed Ambulance</h3>
             <div class="phone-number">📞 Emergency: 6387465536</div>
             <div class="phone-number">💬 WhatsApp: 6387465536</div>
             <p style="margin-top: 20px; opacity: 0.8;">24/7 Available • Fast Response • Professional Service</p>
+            <div style="margin-top: 20px;">
+                <p>Email: info@redmedambulance.com</p>
+                <p>Corporate Office: Lucknow, Uttar Pradesh</p>
+            </div>
+            
+            <!-- Emergency Call Buttons -->
+            <div style="margin-top: 30px;">
+                <a href="tel:6387465536" class="call-now-button">
+                    📞 CALL NOW: 6387465536
+                </a>
+                <a href="https://wa.me/6387465536" class="call-now-button" style="background: #25D366;">
+                    💬 WHATSAPP: 6387465536
+                </a>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2023 RedMed Ambulance Services. All rights reserved.</p>
+            <p style="margin-top: 10px; opacity: 0.7;">Saving Lives, One Emergency at a Time</p>
         </div>
     </div>
 
     <script>
+        // Booking Form Submission
         document.getElementById('bookingForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('userName').value;
             const phone = document.getElementById('userPhone').value;
-            
+           
             alert(`Thank you ${name}! Our team will contact you at ${phone} within 30 seconds.`);
             this.reset();
+        });
+
+        // FAQ Toggle Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+
+        // Smooth Scrolling for Navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Close mobile menu after clicking a link
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        // Mobile Menu Toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
         });
     </script>
 </body>
