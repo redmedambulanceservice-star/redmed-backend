@@ -897,6 +897,70 @@
             document.getElementById('navLinks').classList.toggle('active');
         });
     </script>
+    <!-- Yahan tak aapka pura website code -->
+
+<!-- Firebase Integration -->
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
+
+<script>
+  // YAHAN PASTE KAREIN - NAYA CONFIGURATION
+  const firebaseConfig = {
+    apiKey: "AIzaSyApiFireFast200PMiniAl4EdgeJDC86E5",
+    authDomain: "redmed-ambulance.firebaseapp.com",
+    databaseURL: "https://redmed-ambulance-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "redmed-ambulance",
+    storageBucket: "redmed-ambulance.firebasestorage.app",
+    messagingSenderId: "6423558714",
+    appId: "1:6423558714:web:a94d2afaa6b07d4fbd669",
+    measurementId: "G-PROFUNDERP"
+  };
+
+  // Firebase initialize karein
+  firebase.initializeApp(firebaseConfig);
+  const database = firebase.database();
+  console.log("🔥 Website Firebase Connected!");
+
+  // Booking form handling
+  document.getElementById('bookingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('userName').value;
+    const phone = document.getElementById('userPhone').value;
+    
+    if (!name || !phone) {
+      alert('Please fill all fields');
+      return;
+    }
+    
+    const timestamp = new Date().toISOString();
+    const bookingId = 'BOOK_' + Date.now();
+    
+    // Firebase mein data save karein
+    const bookingData = {
+      name: name,
+      phone: phone,
+      timestamp: timestamp,
+      status: 'pending',
+      bookingId: bookingId,
+      source: 'website'
+    };
+    
+    database.ref('bookings/' + bookingId).set(bookingData)
+      .then(() => {
+        alert(`✅ Thank you ${name}! Our team will contact you at ${phone} within 30 seconds.`);
+        document.getElementById('bookingForm').reset();
+      })
+      .catch((error) => {
+        console.error('Error saving booking:', error);
+        alert('❌ There was an error. Please try again.');
+      });
+  });
+</script>
+
+</body>
+</html>
 </body>
 
 </html>
+
