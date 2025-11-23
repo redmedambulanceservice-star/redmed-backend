@@ -1,40 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RedMed Ambulance Service - 24/7 Emergency Medical Services Across India</title>
-    <meta name="description"
-        content="RedMed Ambulance Service - 24/7 emergency ambulance services across India. Patient transfer, BLS, ALS, Dead body ambulance, Freezer ambulance, Air ambulance services.">
-    <meta name="keywords"
-        content="ambulance service, emergency ambulance, patient transfer, BLS ambulance, ALS ambulance, dead body ambulance, freezer ambulance, air ambulance, train ambulance, medical transportation">
-
+    <meta name="description" content="RedMed Ambulance Service - 24/7 emergency ambulance services across India. Patient transfer, BLS, ALS, Dead body ambulance, Freezer ambulance, Air ambulance services.">
+    <meta name="keywords" content="ambulance service, emergency ambulance, patient transfer, BLS ambulance, ALS ambulance, dead body ambulance, freezer ambulance, air ambulance, train ambulance, medical transportation">
+    
     <!-- SEO Meta Tags -->
     <meta name="robots" content="index, follow">
     <meta name="author" content="RedMed Ambulance Service">
     <link rel="canonical" href="https://redmedambulance.com">
-
+    
     <!-- Open Graph -->
     <meta property="og:title" content="RedMed Ambulance Service - 24/7 Emergency Medical Services">
-    <meta property="og:description"
-        content="24/7 emergency ambulance services across India. Immediate response, trained paramedics, advanced life support.">
+    <meta property="og:description" content="24/7 emergency ambulance services across India. Immediate response, trained paramedics, advanced life support.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://redmedambulance.com">
-
+    
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <!-- Google Maps API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
-
+    
     <style>
         * {
             margin: 0;
@@ -107,7 +102,7 @@
             font-size: 1.8rem;
             font-weight: 800;
             color: var(--primary);
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
         .logo-sub {
@@ -242,7 +237,7 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, rgba(220, 38, 38, 0.9) 0%, rgba(239, 68, 68, 0.9) 100%), url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3') center/cover;
+            background: linear-gradient(135deg, rgba(220,38,38,0.9) 0%, rgba(239,68,68,0.9) 100%), url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3') center/cover;
             color: var(--white);
             padding: 160px 0 100px;
             text-align: center;
@@ -266,7 +261,7 @@
             font-weight: 800;
             margin-bottom: 1rem;
             line-height: 1.2;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
         .hero p {
@@ -295,6 +290,7 @@
             align-items: center;
             gap: 8px;
             box-shadow: var(--shadow);
+            cursor: pointer;
         }
 
         .btn-primary {
@@ -309,8 +305,7 @@
             border: 2px solid var(--white);
         }
 
-        .btn-primary:hover,
-        .btn-secondary:hover {
+        .btn-primary:hover, .btn-secondary:hover {
             transform: translateY(-2px);
             box-shadow: 0 15px 40px rgba(220, 38, 38, 0.3);
         }
@@ -916,9 +911,7 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-
-            .nav-links,
-            .emergency-contact {
+            .nav-links, .emergency-contact {
                 display: none;
             }
 
@@ -970,18 +963,17 @@
             .location-buttons {
                 flex-direction: column;
             }
-
+            
             .logo-main {
                 font-size: 1.5rem;
             }
-
+            
             .logo-sub {
                 font-size: 0.8rem;
             }
         }
     </style>
 </head>
-
 <body>
     <!-- Header -->
     <header>
@@ -993,7 +985,7 @@
                         <div class="logo-sub">AMBULANCE SERVICES</div>
                     </div>
                 </a>
-
+                
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#services">Services</a></li>
@@ -1031,9 +1023,9 @@
             <li><a href="#faq">FAQ</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><a href="tel:6387465536" class="emergency-btn" style="margin-top: 20px; display: inline-block;">
-                    <i class="fas fa-phone"></i>
-                    Call Now: 6387465536
-                </a></li>
+                <i class="fas fa-phone"></i>
+                Call Now: 6387465536
+            </a></li>
         </ul>
     </div>
 
@@ -1043,15 +1035,15 @@
             <h1>24/7 Emergency Ambulance Service</h1>
             <p>Immediate response, trained paramedics, and advanced life support when you need it most</p>
             <div class="cta-buttons">
-                <a href="#booking" class="btn btn-primary">
+                <a href="#booking" class="btn btn-primary" id="bookAmbulanceBtn">
                     <i class="fas fa-ambulance"></i>
                     Book Ambulance Now
                 </a>
-                <a href="tel:6387465536" class="btn btn-secondary">
+                <a href="tel:6387465536" class="btn btn-secondary" id="callNowBtn">
                     <i class="fas fa-phone"></i>
                     Call Now
                 </a>
-                <a href="https://wa.me/916387465536" class="btn btn-secondary">
+                <a href="https://wa.me/916387465536" class="btn btn-secondary" id="whatsappBtn">
                     <i class="fab fa-whatsapp"></i>
                     WhatsApp Us
                 </a>
@@ -1142,8 +1134,7 @@
                         <i class="fas fa-procedures"></i>
                     </div>
                     <h3>Patient Transfer</h3>
-                    <p>Safe and comfortable transfer of patients between hospitals or from home to hospital with basic
-                        medical support</p>
+                    <p>Safe and comfortable transfer of patients between hospitals or from home to hospital with basic medical support</p>
                 </div>
 
                 <div class="service-card">
@@ -1159,8 +1150,7 @@
                         <i class="fas fa-heartbeat"></i>
                     </div>
                     <h3>Advanced Life Support (ALS)</h3>
-                    <p>Advanced medical equipment including ECG monitor, ventilator, defibrillator, and trained
-                        paramedic staff</p>
+                    <p>Advanced medical equipment including ECG monitor, ventilator, defibrillator, and trained paramedic staff</p>
                 </div>
 
                 <div class="service-card">
@@ -1168,8 +1158,7 @@
                         <i class="fas fa-bed"></i>
                     </div>
                     <h3>Dead Body Ambulance</h3>
-                    <p>Dignified transportation of deceased with proper facilities, respect, and necessary documentation
-                    </p>
+                    <p>Dignified transportation of deceased with proper facilities, respect, and necessary documentation</p>
                 </div>
 
                 <div class="service-card">
@@ -1177,8 +1166,7 @@
                         <i class="fas fa-snowflake"></i>
                     </div>
                     <h3>Freezer Ambulance</h3>
-                    <p>Refrigerated transportation for preserving bodies during long-distance transfers with temperature
-                        control</p>
+                    <p>Refrigerated transportation for preserving bodies during long-distance transfers with temperature control</p>
                 </div>
 
                 <div class="service-card">
@@ -1203,13 +1191,9 @@
             <div class="about-content">
                 <div class="about-text">
                     <h2>Leading Ambulance Service Provider in India</h2>
-                    <p>RedMed Ambulance Service is a premier emergency medical transportation provider operating across
-                        50+ cities in India. With over a decade of experience, we have built a reputation for
-                        reliability, speed, and compassionate care.</p>
-
-                    <p>Our fleet of advanced ambulances is equipped with state-of-the-art medical equipment and staffed
-                        by trained paramedics and emergency medical technicians. We understand that during medical
-                        emergencies, every second counts, which is why we maintain a 24/7 operational readiness.</p>
+                    <p>RedMed Ambulance Service is a premier emergency medical transportation provider operating across 50+ cities in India. With over a decade of experience, we have built a reputation for reliability, speed, and compassionate care.</p>
+                    
+                    <p>Our fleet of advanced ambulances is equipped with state-of-the-art medical equipment and staffed by trained paramedics and emergency medical technicians. We understand that during medical emergencies, every second counts, which is why we maintain a 24/7 operational readiness.</p>
 
                     <div class="about-features">
                         <div class="feature">
@@ -1337,10 +1321,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>We provide comprehensive ambulance services including Patient Transfer, Basic Life Support
-                            (BLS), Advanced Life Support (ALS), Dead Body Ambulance (Small & Big), Freezer Ambulance,
-                            Air Ambulance, and Train Ambulance services. Each ambulance is equipped according to its
-                            specific medical requirements.</p>
+                        <p>We provide comprehensive ambulance services including Patient Transfer, Basic Life Support (BLS), Advanced Life Support (ALS), Dead Body Ambulance (Small & Big), Freezer Ambulance, Air Ambulance, and Train Ambulance services. Each ambulance is equipped according to its specific medical requirements.</p>
                     </div>
                 </div>
 
@@ -1350,9 +1331,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>We maintain a rapid response system and aim to dispatch the nearest available ambulance
-                            within 5-15 minutes of receiving your booking confirmation. Our GPS-enabled dispatch system
-                            ensures the closest ambulance is sent to your location.</p>
+                        <p>We maintain a rapid response system and aim to dispatch the nearest available ambulance within 5-15 minutes of receiving your booking confirmation. Our GPS-enabled dispatch system ensures the closest ambulance is sent to your location.</p>
                     </div>
                 </div>
 
@@ -1362,9 +1341,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes, all our ambulances are staffed with trained paramedics, emergency medical technicians,
-                            and drivers with medical training. Our medical staff undergoes regular training and
-                            certification to maintain the highest standards of emergency care.</p>
+                        <p>Yes, all our ambulances are staffed with trained paramedics, emergency medical technicians, and drivers with medical training. Our medical staff undergoes regular training and certification to maintain the highest standards of emergency care.</p>
                     </div>
                 </div>
 
@@ -1374,9 +1351,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes, we operate 24 hours a day, 7 days a week, including all holidays and weekends. Our
-                            emergency helpline is always active to handle any medical emergency situation at any time.
-                        </p>
+                        <p>Yes, we operate 24 hours a day, 7 days a week, including all holidays and weekends. Our emergency helpline is always active to handle any medical emergency situation at any time.</p>
                     </div>
                 </div>
 
@@ -1386,9 +1361,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>We provide services across all major cities in India including Mumbai, Delhi, Bengaluru,
-                            Chennai, Kolkata, Hyderabad, and 40+ other cities. We're continuously expanding our service
-                            network to reach more locations.</p>
+                        <p>We provide services across all major cities in India including Mumbai, Delhi, Bengaluru, Chennai, Kolkata, Hyderabad, and 40+ other cities. We're continuously expanding our service network to reach more locations.</p>
                     </div>
                 </div>
 
@@ -1398,9 +1371,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>We offer multiple payment options including cash, UPI, credit/debit cards, and online
-                            payments. Payment is typically made after the service is completed. For corporate clients
-                            and regular customers, we also provide monthly billing options.</p>
+                        <p>We offer multiple payment options including cash, UPI, credit/debit cards, and online payments. Payment is typically made after the service is completed. For corporate clients and regular customers, we also provide monthly billing options.</p>
                     </div>
                 </div>
             </div>
@@ -1443,8 +1414,7 @@
                         </div>
                         <div>
                             <h3>Email</h3>
-                            <p><a href="mailto:redmedambulanceservice@gmail.com">redmedambulanceservice@gmail.com</a>
-                            </p>
+                            <p><a href="mailto:redmedambulanceservice@gmail.com">redmedambulanceservice@gmail.com</a></p>
                         </div>
                     </div>
 
@@ -1489,8 +1459,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>RedMed Ambulance</h3>
-                    <p>24/7 emergency ambulance services across India. Immediate response, trained paramedics, and
-                        advanced medical equipment for all emergency situations.</p>
+                    <p>24/7 emergency ambulance services across India. Immediate response, trained paramedics, and advanced medical equipment for all emergency situations.</p>
                 </div>
 
                 <div class="footer-section">
@@ -1522,15 +1491,13 @@
                     <ul class="footer-links">
                         <li><i class="fas fa-phone"></i> <a href="tel:6387465536">6387465536</a></li>
                         <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/916387465536">WhatsApp</a></li>
-                        <li><i class="fas fa-envelope"></i> <a
-                                href="mailto:redmedambulanceservice@gmail.com">redmedambulanceservice@gmail.com</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:redmedambulanceservice@gmail.com">redmedambulanceservice@gmail.com</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="copyright">
-                <p>&copy; 2024 RedMed Ambulance Service. All rights reserved. | Emergency: <a href="tel:6387465536"
-                        style="color: #CBD5E0;">6387465536</a></p>
+                <p>&copy; 2024 RedMed Ambulance Service. All rights reserved. | Emergency: <a href="tel:6387465536" style="color: #CBD5E0;">6387465536</a></p>
             </div>
         </div>
     </footer>
@@ -1776,37 +1743,89 @@
             this.reset();
         });
 
-        // Smooth Scroll - FIXED for all buttons
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+        // HOME SCREEN BUTTON FIXES
+        document.addEventListener('DOMContentLoaded', function() {
+            // Book Ambulance Now Button
+            const bookAmbulanceBtn = document.getElementById('bookAmbulanceBtn');
+            if (bookAmbulanceBtn) {
+                bookAmbulanceBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const bookingSection = document.getElementById('booking');
+                    if (bookingSection) {
+                        bookingSection.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            }
+
+            // Call Now Button
+            const callNowBtn = document.getElementById('callNowBtn');
+            if (callNowBtn) {
+                callNowBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.location.href = 'tel:6387465536';
+                });
+            }
+
+            // WhatsApp Button
+            const whatsappBtn = document.getElementById('whatsappBtn');
+            if (whatsappBtn) {
+                whatsappBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const message = `Hello RedMed Ambulance Service, I need emergency ambulance assistance.`;
+                    window.open(`https://wa.me/916387465536?text=${encodeURIComponent(message)}`, '_blank');
+                });
+            }
+
+            // Smooth Scroll for all navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
             });
         });
 
-        // Mobile Menu Functionality
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileMenuClose = document.querySelector('.mobile-menu-close');
-        
-        mobileMenuBtn.addEventListener('click', function() {
-            mobileMenu.classList.add('active');
-        });
-        
-        mobileMenuClose.addEventListener('click', function() {
-            mobileMenu.classList.remove('active');
-        });
-        
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.mobile-nav-links a').forEach(link => {
-            link.addEventListener('click', function() {
-                mobileMenu.classList.remove('active');
+        // Mobile Menu Functionality - FIXED
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuClose = document.querySelector('.mobile-menu-close');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.style.display = 'block';
+                    setTimeout(function() {
+                        mobileMenu.classList.add('active');
+                    }, 10);
+                });
+            }
+            
+            if (mobileMenuClose) {
+                mobileMenuClose.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    setTimeout(function() {
+                        mobileMenu.style.display = 'none';
+                    }, 300);
+                });
+            }
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    setTimeout(function() {
+                        mobileMenu.style.display = 'none';
+                    }, 300);
+                });
             });
         });
 
@@ -1816,5 +1835,4 @@
         });
     </script>
 </body>
-
 </html>
