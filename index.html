@@ -83,14 +83,33 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
             text-decoration: none;
         }
 
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo-main {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .logo-tagline {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
         .logo i {
-            font-size: 2rem;
+            font-size: 2.5rem;
+            color: var(--primary);
         }
 
         .nav-links {
@@ -703,6 +722,14 @@
                 height: 50px;
                 font-size: 1.25rem;
             }
+
+            .logo-main {
+                font-size: 1.5rem;
+            }
+
+            .logo-tagline {
+                font-size: 0.6rem;
+            }
         }
     </style>
 </head>
@@ -712,8 +739,10 @@
         <div class="container">
             <nav class="navbar">
                 <a href="#" class="logo">
-                    <i class="fas fa-ambulance"></i>
-                    Redcab Ambulance
+                    <div class="logo-container">
+                        <div class="logo-main">RedCab Ambulance</div>
+                        <div class="logo-tagline">EMERGENCY MEDICAL SERVICE</div>
+                    </div>
                 </a>
                 
                 <ul class="nav-links">
