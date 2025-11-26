@@ -2130,8 +2130,6 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        // Same JavaScript code as before - it works perfectly with the new design
-        // The functionality remains exactly the same, only the visual design has been enhanced
         let currentLanguage = 'en';
         let selectedAmbulance = 'patient-transfer';
         let currentDistance = 0;
@@ -2563,16 +2561,50 @@
             }
         }
 
+        // FIXED CALL FUNCTIONALITY
         function callNumber(number) {
-            showToast(`Calling ${number}...`);
+            // Check if running on mobile device
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                // For mobile devices, use tel: protocol
+                window.location.href = `tel:${number}`;
+            } else {
+                // For desktop, show a message
+                showToast(`Please call ${number} from your phone`);
+                // Optionally, you can copy the number to clipboard
+                navigator.clipboard.writeText(number).then(() => {
+                    showToast(`Phone number ${number} copied to clipboard`);
+                });
+            }
         }
 
+        // FIXED WHATSAPP FUNCTIONALITY
         function openWhatsApp(number) {
-            showToast(`Opening WhatsApp for ${number}...`);
+            // Create WhatsApp message
+            const message = currentLanguage === 'en' 
+                ? 'Hello, I need ambulance service from RedCab.'
+                : 'नमस्ते, मुझे RedCab से एम्बुलेंस सेवा चाहिए।';
+            
+            // Encode the message for URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Create WhatsApp URL
+            const whatsappURL = `https://wa.me/${number}?text=${encodedMessage}`;
+            
+            // Open WhatsApp in new tab
+            window.open(whatsappURL, '_blank');
         }
 
+        // FIXED EMERGENCY CALL FUNCTION
         function callEmergency() {
-            callNumber('6387465536');
+            const emergencyNumber = '6387465536';
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                window.location.href = `tel:${emergencyNumber}`;
+            } else {
+                showToast(`Emergency! Please call ${emergencyNumber} immediately`);
+                navigator.clipboard.writeText(emergencyNumber).then(() => {
+                    showToast(`Emergency number ${emergencyNumber} copied to clipboard`);
+                });
+            }
         }
 
         function showNotification() {
