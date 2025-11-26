@@ -14,6 +14,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', 'Hind', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         :root {
@@ -50,6 +51,7 @@
             min-height: 100vh;
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
             overflow-x: hidden;
+            touch-action: manipulation;
         }
 
         .container {
@@ -1508,6 +1510,148 @@
             margin-right: 12px;
             font-size: 18px;
         }
+
+        /* Notification Screen */
+        .notification-screen {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .notification-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 18px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+
+        .notification-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 20px;
+        }
+
+        .notification-content {
+            flex: 1;
+        }
+
+        .notification-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--text);
+        }
+
+        .notification-message {
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .notification-time {
+            color: var(--text-light);
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        /* Help & Support Screen */
+        .help-section {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 18px;
+            background: var(--secondary);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 18px;
+            max-height: 500px;
+        }
+
+        .support-contact {
+            background: var(--primary-light);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        /* Mobile Navigation Enhancements */
+        @media (max-width: 500px) {
+            body {
+                max-width: 100%;
+            }
+            
+            .container {
+                padding: 15px;
+                padding-bottom: 100px;
+            }
+            
+            .bottom-nav {
+                padding: 15px 0;
+            }
+            
+            .nav-item {
+                padding: 8px 12px;
+            }
+            
+            .emergency-btn {
+                bottom: 85px;
+                right: 20px;
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+        }
+
+        /* Touch improvements */
+        button, .header-icon, .quick-action, .contact-option, .profile-item, .nav-item {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        input, textarea {
+            -webkit-user-select: text;
+            user-select: text;
+        }
     </style>
 </head>
 <body>
@@ -1533,6 +1677,135 @@
         </div>
     </div>
 
+    <!-- Notification Screen -->
+    <div id="notification-screen" class="screen">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <div class="logo-text">
+                    <h1 data-en="Notifications" data-hi="सूचनाएं">Notifications</h1>
+                    <p data-en="Your alerts" data-hi="आपकी अलर्ट्स">Your alerts</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <div class="header-icon" onclick="showScreen('home-screen')">
+                    <i class="fas fa-home"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="notification-screen">
+                <div class="notification-item">
+                    <div class="notification-icon">
+                        <i class="fas fa-ambulance"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title" data-en="Ambulance Assigned" data-hi="एम्बुलेंस असाइन की गई">Ambulance Assigned</div>
+                        <div class="notification-message" data-en="Your ambulance has been assigned and will arrive in 7 minutes" data-hi="आपकी एम्बुलेंस असाइन की गई है और 7 मिनट में पहुंचेगी">Your ambulance has been assigned and will arrive in 7 minutes</div>
+                        <div class="notification-time">10:30 AM • Today</div>
+                    </div>
+                </div>
+                
+                <div class="notification-item">
+                    <div class="notification-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title" data-en="Driver Update" data-hi="ड्राइवर अपडेट">Driver Update</div>
+                        <div class="notification-message" data-en="Harold is your assigned driver with 5-star rating" data-hi="हैरोल्ड आपका असाइन किया गया ड्राइवर है जिसकी रेटिंग 5 स्टार है">Harold is your assigned driver with 5-star rating</div>
+                        <div class="notification-time">09:15 AM • Today</div>
+                    </div>
+                </div>
+                
+                <div class="notification-item">
+                    <div class="notification-icon">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title" data-en="Special Offer" data-hi="स्पेशल ऑफर">Special Offer</div>
+                        <div class="notification-message" data-en="Get 20% off on your next booking with code REDCAB20" data-hi="अपनी अगली बुकिंग पर REDCAB20 कोड से 20% छूट पाएं">Get 20% off on your next booking with code REDCAB20</div>
+                        <div class="notification-time">Yesterday</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help & Support Screen -->
+    <div id="help-support-screen" class="screen">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <div class="logo-text">
+                    <h1 data-en="Help & Support" data-hi="सहायता और समर्थन">Help & Support</h1>
+                    <p data-en="Get assistance" data-hi="सहायता प्राप्त करें">Get assistance</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <div class="header-icon" onclick="showScreen('home-screen')">
+                    <i class="fas fa-home"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="help-section">
+                <h3 class="section-title" data-en="Frequently Asked Questions" data-hi="अक्सर पूछे जाने वाले प्रश्न">Frequently Asked Questions</h3>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-en="How do I book an ambulance?" data-hi="मैं एम्बुलेंस कैसे बुक करूं?">How do I book an ambulance?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p data-en="To book an ambulance, simply enter your pickup and drop locations, select the ambulance type, and click 'Book Ambulance Now'. Our system will find the nearest available ambulance for you." data-hi="एम्बुलेंस बुक करने के लिए, बस अपना पिकअप और ड्रॉप लोकेशन दर्ज करें, एम्बुलेंस प्रकार चुनें और 'अभी एम्बुलेंस बुक करें' पर क्लिक करें। हमारी सिस्टम आपके लिए निकटतम उपलब्ध एम्बुलेंस ढूंढेगी।">To book an ambulance, simply enter your pickup and drop locations, select the ambulance type, and click 'Book Ambulance Now'. Our system will find the nearest available ambulance for you.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-en="What types of ambulances are available?" data-hi="किस प्रकार की एम्बुलेंस उपलब्ध हैं?">What types of ambulances are available?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p data-en="We offer Patient Transfer, Basic Life Support, Advance Life Support, and Dead Body Transport services with trained medical staff and necessary equipment." data-hi="हम प्रशिक्षित मेडिकल स्टाफ और आवश्यक उपकरणों के साथ पेशेंट ट्रांसफर, बेसिक लाइफ सपोर्ट, एडवांस लाइफ सपोर्ट और डेड बॉडी ट्रांसपोर्ट सेवाएं प्रदान करते हैं।">We offer Patient Transfer, Basic Life Support, Advance Life Support, and Dead Body Transport services with trained medical staff and necessary equipment.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-en="How is the fare calculated?" data-hi="किराया कैसे गणना की जाती है?">How is the fare calculated?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p data-en="Fare is calculated based on base charge for the ambulance type plus distance charges. You can see the fare breakdown before confirming your booking." data-hi="किराया एम्बुलेंस प्रकार के लिए आधार शुल्क और दूरी शुल्क के आधार पर गणना की जाती है। आप अपनी बुकिंग की पुष्टि करने से पहले किराया विवरण देख सकते हैं।">Fare is calculated based on base charge for the ambulance type plus distance charges. You can see the fare breakdown before confirming your booking.</p>
+                    </div>
+                </div>
+                
+                <div class="support-contact">
+                    <h4 data-en="Need more help?" data-hi="और सहायता चाहिए?">Need more help?</h4>
+                    <p data-en="Contact our 24/7 support team" data-hi="हमारी 24/7 सपोर्ट टीम से संपर्क करें">Contact our 24/7 support team</p>
+                    <div style="display: flex; gap: 12px; margin-top: 15px; justify-content: center;">
+                        <button class="action-btn" onclick="callNumber('6387465536')" style="background: var(--primary); color: white;">
+                            <i class="fas fa-phone"></i>
+                            <span data-en="Call" data-hi="कॉल">Call</span>
+                        </button>
+                        <button class="action-btn" onclick="openWhatsApp('6387465536')" style="background: var(--success); color: white;">
+                            <i class="fab fa-whatsapp"></i>
+                            <span data-en="WhatsApp" data-hi="व्हाट्सएप">WhatsApp</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rest of your existing screens (Login, OTP, Profile Setup, Home, Bookings, Tracking, Profile, Confirmation) -->
     <!-- Login Screen -->
     <div id="login-screen" class="screen active-screen">
         <div class="login-container">
@@ -1659,9 +1932,9 @@
                 </div>
             </div>
             <div class="header-actions">
-                <div class="header-icon" onclick="showNotification()">
+                <div class="header-icon" onclick="showScreen('notification-screen')">
                     <i class="fas fa-bell"></i>
-                    <div class="notification-badge">2</div>
+                    <div class="notification-badge">3</div>
                 </div>
                 <div class="header-icon" onclick="showScreen('profile-screen')">
                     <i class="fas fa-user"></i>
@@ -2045,17 +2318,17 @@
                         <i class="fas fa-user-edit"></i>
                         <span data-en="Edit Profile" data-hi="प्रोफाइल संपादित करें">Edit Profile</span>
                     </div>
-                    <div class="profile-item" onclick="showToast('Payment Methods clicked')">
-                        <i class="fas fa-credit-card"></i>
-                        <span data-en="Payment Methods" data-hi="भुगतान विधियाँ">Payment Methods</span>
-                    </div>
-                    <div class="profile-item" onclick="showToast('Notifications clicked')">
+                    <div class="profile-item" onclick="showScreen('notification-screen')">
                         <i class="fas fa-bell"></i>
                         <span data-en="Notifications" data-hi="सूचनाएं">Notifications</span>
                     </div>
-                    <div class="profile-item" onclick="showToast('Help & Support clicked')">
+                    <div class="profile-item" onclick="showScreen('help-support-screen')">
                         <i class="fas fa-question-circle"></i>
                         <span data-en="Help & Support" data-hi="सहायता और समर्थन">Help & Support</span>
+                    </div>
+                    <div class="profile-item" onclick="showToast('Payment Methods clicked')">
+                        <i class="fas fa-credit-card"></i>
+                        <span data-en="Payment Methods" data-hi="भुगतान विधियाँ">Payment Methods</span>
                     </div>
                     <div class="profile-item" onclick="logout()">
                         <i class="fas fa-sign-out-alt"></i>
@@ -2608,7 +2881,7 @@
         }
 
         function showNotification() {
-            showToast('You have 2 new notifications');
+            showScreen('notification-screen');
         }
 
         function cancelBooking(bookingId) {
@@ -2697,11 +2970,47 @@
             }, 1500);
         }
 
+        // NEW FUNCTION: Toggle FAQ items
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            faqItem.classList.toggle('active');
+            
+            const icon = element.querySelector('i');
+            if (faqItem.classList.contains('active')) {
+                icon.className = 'fas fa-chevron-up';
+            } else {
+                icon.className = 'fas fa-chevron-down';
+            }
+        }
+
+        // Mobile navigation improvements
         document.addEventListener('DOMContentLoaded', function() {
+            // Add touch improvements
             const stars = document.querySelectorAll('.rating-star');
             stars.forEach(star => {
                 star.addEventListener('click', function() {
                     setRating(parseInt(this.getAttribute('data-rating')));
+                });
+            });
+
+            // Prevent zoom on double tap
+            let lastTouchEnd = 0;
+            document.addEventListener('touchend', function (event) {
+                const now = (new Date()).getTime();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, false);
+
+            // Improve button responsiveness
+            const buttons = document.querySelectorAll('button, .header-icon, .quick-action, .contact-option, .profile-item, .nav-item');
+            buttons.forEach(button => {
+                button.addEventListener('touchstart', function() {
+                    this.style.transform = 'scale(0.95)';
+                });
+                button.addEventListener('touchend', function() {
+                    this.style.transform = '';
                 });
             });
         });
